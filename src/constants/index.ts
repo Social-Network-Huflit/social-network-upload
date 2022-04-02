@@ -3,6 +3,7 @@ export const {
     CLIENT_SECRET,
     REDIRECT_URL,
     REFRESH_TOKEN,
-    FOLDER_ID,
+    FOLDER_IMAGE_ID,
+    FOLDER_VIDEO_ID,
     PORT,
 } = process.env;

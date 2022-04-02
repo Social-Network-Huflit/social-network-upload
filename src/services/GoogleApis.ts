@@ -2,7 +2,6 @@ import { google } from "googleapis";
 import {
     CLIENT_ID,
     CLIENT_SECRET,
-    FOLDER_ID,
     REDIRECT_URL,
     REFRESH_TOKEN,
 } from "../constants/index";

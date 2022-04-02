@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import fs from "fs";
-import { FOLDER_ID } from "../constants";
+import { FOLDER_IMAGE_ID, FOLDER_VIDEO_ID } from "../constants";
 import { drive } from "../services/GoogleApis";
 
 const formidable = require("formidable-serverless");
@@ -18,6 +18,11 @@ export default class Controller {
                 }
 
                 const file = files.file;
+
+                const type = file.type.split("/")[0];
+
+                const FOLDER_ID =
+                    type === "image" ? FOLDER_IMAGE_ID : FOLDER_VIDEO_ID;
 
                 const createFile = await drive.files.create({
                     requestBody: {
@@ -39,10 +44,10 @@ export default class Controller {
                     },
                 });
 
-                const image_link = `https://drive.google.com/uc?id=${createFile.data.id}`;
+                const link = `https://drive.google.com/uc?id=${createFile.data.id}`;
 
                 res.status(200).json({
-                    image_link,
+                    [`${type}_link`]: link,
                     file_id: createFile.data.id,
                 });
             });
