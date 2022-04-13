@@ -6,4 +6,5 @@ export const {
     FOLDER_IMAGE_ID,
     FOLDER_VIDEO_ID,
     PORT,
+    ACCESS_TOKEN
 } = process.env;
